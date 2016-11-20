@@ -5,7 +5,7 @@ Public IP Address: http://35.163.233.99/
 ssh -i ~/.ssh/udacity_key.rsa root@35.163.233.99
 ```
 
-### Step 1
+## Step 1
  - Add an new user which its username is "grader" and its password is "grader"
 ```
 sudo adduser grader
@@ -48,7 +48,7 @@ sudo service ssh restart
 ssh -i ~/.ssh/udacity_key.rsa grader@35.163.233.99
 ```
 
-### Step 2
+## Step 2
 - Update all of the packages
 ```
    sudo apt-get update
@@ -77,8 +77,24 @@ sudo git clone https://github.com/farbod-salimi/catalog.git
 sudo apt-get install apache2
 sudo apt-get install libapache2-mod-wsgi
 ```
+## Step 3
+ - Install PostgreSQL
+```
+  sudo apt-get install postgresql
+  sudo apt-get install python-psycopg2
+  sudo -u postgres createuser catalog
+  sudo -u postgres createdb catalog
+```
+## Step 4
+ - Setup the apache wsgi module.
+```
+cp -r /var/www/catalog/catalog.conf /etc/apache2/sites-available/catalog.conf
+sudo a2dissite 000-default
+sudo a2ensite catalog
+sudo service apache2 restart
+```
 
-### Step 3
+## Step 5
  - Change Firewall configuration
 ```
 sudo ufw default deny incoming
