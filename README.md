@@ -2,11 +2,11 @@
 
 Public IP Address: http://35.163.233.99/
 ```
-ssh -i ~/.ssh/udacity_key.rsa root@35.163.233.99
+ssh -i ~/.ssh/udacity_key.rsa -p 2200 root@35.163.233.99
 ```
 
 ## Step 1
- - Add an new user which its username is "grader" and its password is "grader"
+ - Add an new user which its username is "grader"
 ```
 sudo adduser grader
 ```
@@ -17,7 +17,7 @@ sudo visudo
 ```
  - Add the following line to the permisssions
 ```
-grader  ALL=(ALL:ALL) ALL
+grader  ALL=(ALL) ALL
 ```
 
  - Allow "grader" to login via private key
@@ -46,13 +46,14 @@ sudo service ssh restart
  - Now you are able to login via grader
 
 ```
-ssh -i ~/.ssh/udacity_key.rsa grader@35.163.233.99
+ssh -i ~/.ssh/udacity_key.rsa -p 2200 grader@35.163.233.99
 ```
 
 ## Step 2
 - Update all of the packages
 ```
-   sudo apt-get update
+sudo apt-get dist-upgrade
+sudo apt-get update
 ```
  - Install GIT
 ```
@@ -107,6 +108,7 @@ sudo ufw allow HTTP
 sudo ufw allow 80
 sudo ufw allow NTP
 sudo ufw allow 123
+sudo ufw deny 22
 sudo ufw enable
 sudo ufw satus
 ```
