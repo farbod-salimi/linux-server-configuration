@@ -35,8 +35,13 @@ sudo nano /etc/ssh/sshd_config
 ```
  - Firstly, change the SSH port from 22 to 2200 
  - Secondly, change yes to no :
+
 ```
 PasswordAuthentication yes -> no
+``` 
+ - Thirdly, disable the root ssh login
+```
+PermitRootLogin no
 ```
  - And finally restart ssh service
 ```
